@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   deleteButton.textContent = "Delete All";
   const body = document.querySelector('body')
   body.appendChild(deleteButton);
+  deleteButton.addEventListener('click', handleDeleteAll);
   
 })
 
@@ -21,6 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
     newListItem.textContent = `Title: ${event.target.title.value} Author: ${event.target.author.value} Category: ${event.target.category.value}`;
     resultList.appendChild(newListItem);
     form.reset();
+  }
+
+  const handleDeleteAll = function(event) {
+    const deletedList = document.querySelector('#reading-list');
+    deletedList.querySelectorAll('*').forEach(listItem => listItem.remove());
   }
 
   
