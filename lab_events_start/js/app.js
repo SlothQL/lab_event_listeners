@@ -15,18 +15,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const handleFormSubmit = function(event) {
     event.preventDefault();
-    const form = document.querySelector('#new-item-form');
+    //const form = document.querySelector('#new-item-form');
     const resultList = document.querySelector('#reading-list');
     const newListItem = document.createElement('li');
     newListItem.classList.add('list-item');
     newListItem.textContent = `Title: ${event.target.title.value} Author: ${event.target.author.value} Category: ${event.target.category.value}`;
     resultList.appendChild(newListItem);
-    form.reset();
+    this.reset(); 
+    // we can use this here, cause we are inside the event on that form therefore the context we are calling this is the form
   }
 
   const handleDeleteAll = function(event) {
     const deletedList = document.querySelector('#reading-list');
     deletedList.querySelectorAll('*').forEach(listItem => listItem.remove());
+    // deletedList.innerHTML = '';
   }
 
   
